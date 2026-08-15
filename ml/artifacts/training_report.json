@@ -1,0 +1,197 @@
+{
+  "seed": 503,
+  "source": "https://www.cs.jhu.edu/~mdredze/datasets/sentiment/domain_sentiment_data.tar.gz",
+  "source_review_count": 8000,
+  "duplicates_removed": 148,
+  "outlier_removal": {
+    "method": "Removed reviews outside the 1st-99th token-length percentiles",
+    "minimum_tokens": 13,
+    "maximum_tokens": 749,
+    "removed": 154
+  },
+  "retained_review_count": 7698,
+  "split": {
+    "train": {
+      "size": 5388,
+      "negative": 2668,
+      "positive": 2720
+    },
+    "validation": {
+      "size": 1153,
+      "negative": 571,
+      "positive": 582
+    },
+    "test": {
+      "size": 1157,
+      "negative": 573,
+      "positive": 584
+    }
+  },
+  "model": {
+    "architecture": "Embedding average -> Dense ReLU -> Dropout -> Sigmoid",
+    "vocabulary_size": 12000,
+    "max_length": 260,
+    "embedding_dim": 48,
+    "hidden_dim": 64,
+    "batch_size": 128,
+    "learning_rate": 0.003
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.68831,
+      "validation_loss": 0.67531,
+      "validation_accuracy": 0.6427,
+      "validation_macro_f1": 0.6354
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.64979,
+      "validation_loss": 0.59993,
+      "validation_accuracy": 0.7138,
+      "validation_macro_f1": 0.7137
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.52602,
+      "validation_loss": 0.49548,
+      "validation_accuracy": 0.7537,
+      "validation_macro_f1": 0.7534
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.40174,
+      "validation_loss": 0.45643,
+      "validation_accuracy": 0.7797,
+      "validation_macro_f1": 0.7793
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.30793,
+      "validation_loss": 0.43946,
+      "validation_accuracy": 0.7858,
+      "validation_macro_f1": 0.7857
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.23925,
+      "validation_loss": 0.44564,
+      "validation_accuracy": 0.791,
+      "validation_macro_f1": 0.7909
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.17458,
+      "validation_loss": 0.46143,
+      "validation_accuracy": 0.7997,
+      "validation_macro_f1": 0.7996
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.12348,
+      "validation_loss": 0.49205,
+      "validation_accuracy": 0.7936,
+      "validation_macro_f1": 0.7935
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.08372,
+      "validation_loss": 0.53377,
+      "validation_accuracy": 0.7875,
+      "validation_macro_f1": 0.7875
+    }
+  ],
+  "test_metrics": {
+    "accuracy": 0.8194,
+    "precision_positive": 0.8391,
+    "recall_positive": 0.7945,
+    "recall_negative": 0.8447,
+    "macro_f1": 0.8193,
+    "roc_auc": 0.8894,
+    "confusion_matrix": [
+      [
+        484,
+        89
+      ],
+      [
+        120,
+        464
+      ]
+    ],
+    "loss": 0.426,
+    "by_domain": {
+      "books": {
+        "accuracy": 0.8105,
+        "precision_positive": 0.8239,
+        "recall_positive": 0.78,
+        "recall_negative": 0.8397,
+        "macro_f1": 0.8101,
+        "roc_auc": 0.8768,
+        "confusion_matrix": [
+          [
+            131,
+            25
+          ],
+          [
+            33,
+            117
+          ]
+        ]
+      },
+      "dvd": {
+        "accuracy": 0.8162,
+        "precision_positive": 0.8333,
+        "recall_positive": 0.8219,
+        "recall_negative": 0.8095,
+        "macro_f1": 0.8154,
+        "roc_auc": 0.8851,
+        "confusion_matrix": [
+          [
+            102,
+            24
+          ],
+          [
+            26,
+            120
+          ]
+        ]
+      },
+      "electronics": {
+        "accuracy": 0.809,
+        "precision_positive": 0.845,
+        "recall_positive": 0.7569,
+        "recall_negative": 0.8611,
+        "macro_f1": 0.8085,
+        "roc_auc": 0.8833,
+        "confusion_matrix": [
+          [
+            124,
+            20
+          ],
+          [
+            35,
+            109
+          ]
+        ]
+      },
+      "kitchen_&_housewares": {
+        "accuracy": 0.8419,
+        "precision_positive": 0.8551,
+        "recall_positive": 0.8194,
+        "recall_negative": 0.8639,
+        "macro_f1": 0.8418,
+        "roc_auc": 0.9118,
+        "confusion_matrix": [
+          [
+            127,
+            20
+          ],
+          [
+            26,
+            118
+          ]
+        ]
+      }
+    }
+  }
+}

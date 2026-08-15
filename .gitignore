@@ -41,5 +41,8 @@ yarn-error.log*
 
 # local Python and training inputs
 /.venv/
+/__pycache__/
+**/__pycache__/
+*.py[cod]
 /ml/data/raw/
 /ml/artifacts/*.pt

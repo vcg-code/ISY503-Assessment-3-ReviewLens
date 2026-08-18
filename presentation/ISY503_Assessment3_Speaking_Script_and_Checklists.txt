@@ -1,0 +1,102 @@
+ISY503 ASSESSMENT 3 — REVIEWLENS
+SHORT PRESENTATION SCRIPT AND CHECKLISTS
+
+Suggested total time: 10–12 minutes, including the live demonstration.
+Suggested division: your colleague presents slides 1, 2 and 8; Vitor presents slides 3–7.
+
+SLIDE 1 — REVIEWLENS (COLLEAGUE, ABOUT 40 SECONDS)
+
+Good morning. Our project is called ReviewLens. It is a sentiment analysis tool for English Amazon product reviews. The user enters a review, and our neural network classifies it as either a positive review or a negative review. In this presentation, we will briefly explain the problem, the data, the model, the results and the working website.
+
+SLIDE 2 — THE COMPLETE PIPELINE (COLLEAGUE, ABOUT 50 SECONDS)
+
+The project follows a complete NLP pipeline. First, we receive an English Amazon review as text. Then we clean and encode the text, pass it through the trained neural network, and return one clear result. The website uses the same trained model files as our evaluation. The prediction runs inside the browser, so the review is not sent to an external server.
+
+SLIDE 3 — DATA PREPARATION (VITOR, ABOUT 70 SECONDS)
+
+For training, we used the official Johns Hopkins Multi-Domain Sentiment Dataset. It contains eight thousand labelled Amazon reviews from four domains: books, DVDs, electronics and kitchen products. I removed one hundred and forty-eight exact duplicates to reduce data leakage. I also removed one hundred and fifty-four very short or very long reviews as length outliers. This left seven thousand six hundred and ninety-eight reviews. Finally, I used a reproducible stratified split: five thousand three hundred and eighty-eight reviews for training, one thousand one hundred and fifty-three for validation, and one thousand one hundred and fifty-seven for testing.
+
+SLIDE 4 — NEURAL NETWORK ARCHITECTURE (VITOR, ABOUT 80 SECONDS)
+
+The model is a small neural network built in PyTorch. First, each token becomes an ID. The embedding layer converts each ID into a forty-eight-dimensional word vector. Average pooling combines all valid word vectors into one summary of the review. A dense layer with sixty-four units and ReLU learns nonlinear sentiment patterns. Dropout randomly hides thirty-five per cent of the hidden activations during training, which helps reduce overfitting. Finally, the sigmoid output produces a probability between zero and one. The decision threshold converts this probability into Positive review or Negative review.
+
+SLIDE 5 — TRAINING METHOD (VITOR, ABOUT 60 SECONDS)
+
+For training, I used binary cross-entropy as the loss function and AdamW as the optimiser. The batch size was one hundred and twenty-eight. Early stopping selected the best validation result instead of simply keeping the last epoch. Gradient clipping helped keep the updates stable. I also used seed five-zero-three so the data split and training process can be reproduced. Importantly, the vocabulary was fitted only on the training data, which reduces information leakage from the validation and test sets.
+
+SLIDE 6 — TEST RESULTS (VITOR, ABOUT 80 SECONDS)
+
+I evaluated the final model on the held-out test set, which was not used for training. The accuracy was eighty-one point nine per cent, the macro F1 score was zero point eight-one-nine, and the ROC-AUC was zero point eight-eight-nine. The recall was seventy-nine point five per cent for positive reviews and eighty-four point five per cent for negative reviews. The confusion matrix shows four hundred and eighty-four correct negative predictions and four hundred and sixty-four correct positive predictions. The similar recall values indicate that performance is reasonably balanced between the two classes.
+
+SLIDE 7 — LIVE DEMONSTRATION (VITOR, ABOUT 90 SECONDS)
+
+Now I will demonstrate the final tool. I enter an English product review or choose one of the prepared examples. When I click Analyse review, the browser cleans and tokenises the text, loads the exported neural-network weights, and performs the forward pass locally. The output uses the exact required wording: Positive review or Negative review. The percentage is the model confidence, but it is not certainty. I will show one clearly positive example and one clearly negative example. If the internet connection fails, I will use the screenshots in this slide as a backup.
+
+Positive demo:
+The product arrived quickly, works perfectly and feels much better than I expected.
+
+Negative demo:
+This stopped working after two days. The quality is poor and I would not recommend it.
+
+SLIDE 8 — LIMITATIONS AND CONCLUSION (COLLEAGUE, ABOUT 60 SECONDS)
+
+ReviewLens demonstrates a complete and working NLP system, from data preparation and neural-network training to evaluation and browser inference. However, a prediction is not a fact. The data contains older English Amazon reviews, and the model can struggle with sarcasm, unusual spelling, mixed sentiment and cultural context. For this reason, confidence should support human judgement rather than replace it. Our conclusion is that the model provides useful evidence, but not a final verdict.
+
+QUICK ANSWERS FOR POSSIBLE TECHNICAL QUESTIONS
+
+What is an embedding?
+It converts each token ID into a learned numeric vector that represents useful language patterns.
+
+What is average pooling?
+It averages the valid token vectors to create one fixed-size summary of the whole review.
+
+Why use dropout?
+It randomly hides some hidden activations during training, which reduces the risk of overfitting.
+
+What does sigmoid do?
+It converts the final model score into a probability between zero and one.
+
+Why use macro F1?
+It gives equal importance to both sentiment classes by averaging their individual F1 scores.
+
+What does ROC-AUC mean?
+It measures how well the model separates positive and negative examples across different thresholds.
+
+Why was the vocabulary fitted only on training data?
+This prevents the model from learning information from the validation or test sets before evaluation.
+
+CHECKLIST FOR TOMORROW'S PRESENTATION
+
+[ ] Add all group members' names and student IDs if your lecturer expects them on the first slide.
+[ ] Confirm who presents slides 1–2, 3–7 and 8.
+[ ] Practise the complete presentation once and keep the total between 10 and 15 minutes.
+[ ] Practise Vitor's technical section twice, aiming for 5–6 minutes plus the demo.
+[ ] Open the PowerPoint and the ReviewLens website before the presentation starts.
+[ ] Keep the executed notebook open at the preprocessing, model, training and results sections.
+[ ] Test both prepared demo reviews on the public website.
+[ ] Save the PowerPoint, script, notebook and two demo screenshots locally as backups.
+[ ] Bring the laptop charger and have a phone hotspot available.
+[ ] Know the simple definitions of embedding, pooling, dropout, sigmoid, macro F1 and ROC-AUC.
+[ ] Do not describe the Assessment 3 model as Random Forest; it is a PyTorch neural network.
+[ ] During the demo, say that confidence is not certainty.
+
+CHECKLIST FOR THE END-OF-DAY SUBMISSION
+
+[ ] Group code: submit the GitHub repository link and confirm it opens without signing in.
+[ ] Group code: confirm the executed notebook contains outputs and no failed cells.
+[ ] Group tool: confirm the public ReviewLens link loads and returns both exact labels.
+[ ] Group documentation/manual: check that it matches the final model, metrics and website.
+[ ] Group presentation/video: check audio, image, length and that every group member speaks.
+[ ] Individual report: submit approximately 250 words, within the permitted ±10% range.
+[ ] Individual report: include every member's name, student ID and contribution percentage.
+[ ] Contributions: confirm all percentages add to exactly 100%.
+[ ] Ethics and limitations: include bias, privacy, confidence and human-judgement points.
+[ ] References: use consistent APA formatting for the dataset, Blitzer et al. and PyTorch sources.
+[ ] File names: use clear final names and remove words such as draft, copy or final-final.
+[ ] Final check: open every submitted file and link from the submission page.
+[ ] Save the submission receipt or confirmation screenshot.
+
+PUBLIC LINKS
+
+Website: https://vcg-code.github.io/ISY503-Assessment-3-ReviewLens/
+Repository: https://github.com/vcg-code/ISY503-Assessment-3-ReviewLens

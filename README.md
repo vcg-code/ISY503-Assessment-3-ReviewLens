@@ -5,7 +5,7 @@ network on the official Johns Hopkins Multi-Domain Sentiment Dataset and exposes
 the trained model through a simple website. The required interface accepts review
 text and returns exactly **Positive review** or **Negative review**.
 
-**Live tool:** [Open ReviewLens](https://reviewlens-isy503.jogadorconvidado710.chatgpt.site/)
+**Live tool:** [Open ReviewLens](https://vcg-code.github.io/ISY503-Assessment-3-ReviewLens/)
 
 ## Dataset
 

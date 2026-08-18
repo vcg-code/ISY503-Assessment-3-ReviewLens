@@ -38,6 +38,10 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+/.presentation-build/
+/presentation-assets/
+*.inspect.ndjson
+/presentation/ISY503_Assessment3_ReviewLens_Presentation/
 
 # local Python and training inputs
 /.venv/

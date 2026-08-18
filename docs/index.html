@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ReviewLens classifies English Amazon product reviews as positive or negative using a trained neural network."
+    />
+    <title>ReviewLens · Amazon Review Sentiment Analysis</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="ReviewLens home">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>ReviewLens</span>
+        </a>
+        <span class="course-tag">ISY503 · Assessment 3</span>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Neural sentiment analysis</p>
+          <h1>What does your Amazon review really say?</h1>
+          <p class="hero-intro">
+            Enter a product review and a trained neural network will classify its
+            sentiment as positive or negative.
+          </p>
+          <div class="metric-row" aria-label="Model test results">
+            <div><strong id="accuracy">—</strong><span>test accuracy</span></div>
+            <div><strong id="macro-f1">—</strong><span>macro F1</span></div>
+            <div><strong id="roc-auc">—</strong><span>ROC-AUC</span></div>
+          </div>
+        </div>
+
+        <div class="analyser-panel">
+          <form id="review-form">
+            <div class="field-heading">
+              <label for="review">Review text</label>
+              <span id="word-count">0 words</span>
+            </div>
+            <textarea
+              id="review"
+              placeholder="Example: The product arrived quickly and works exactly as described..."
+              rows="8"
+              maxlength="3000"
+            ></textarea>
+            <div class="example-row">
+              <span>Try an example:</span>
+              <button type="button" data-example="positive">Positive</button>
+              <button type="button" data-example="negative">Negative</button>
+            </div>
+            <button class="analyse-button" id="analyse-button" type="submit" disabled>
+              <span id="button-label">Analyse review</span>
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+
+          <div class="result" id="result" aria-live="polite">
+            <p id="result-placeholder">Your classification will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="process" aria-labelledby="process-title">
+        <div class="section-heading">
+          <p class="eyebrow">Inside the model</p>
+          <h2 id="process-title">From raw text to one clear prediction</h2>
+        </div>
+        <ol class="process-grid">
+          <li><span>01</span><h3>Clean</h3><p>Normalise case, punctuation, links and common contractions.</p></li>
+          <li><span>02</span><h3>Encode</h3><p>Convert words and adjacent word pairs into padded numeric sequences.</p></li>
+          <li><span>03</span><h3>Learn</h3><p>Pass the sequence through embeddings and a nonlinear dense layer.</p></li>
+          <li><span>04</span><h3>Classify</h3><p>Return “Positive review” or “Negative review” with confidence.</p></li>
+        </ol>
+      </section>
+
+      <section class="responsible-use">
+        <div><p class="eyebrow">Responsible use</p><h2>A prediction is not a fact.</h2></div>
+        <p>
+          The model was trained on English Amazon reviews. Sarcasm, unusual spelling,
+          cultural context and reviews from other settings can reduce reliability.
+          Confidence should support human judgement, not replace it.
+        </p>
+      </section>
+
+      <footer>
+        <span>ReviewLens</span>
+        <span>Multi-Domain Sentiment Dataset · Johns Hopkins University</span>
+      </footer>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
